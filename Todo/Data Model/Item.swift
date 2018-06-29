@@ -2,14 +2,16 @@
 //  Item.swift
 //  Todo
 //
-//  Created by Oleg Ten on 26.06.2018.
+//  Created by Oleg Ten on 6/29/18.
 //  Copyright © 2018 Oleg Ten. All rights reserved.
 //
 
 import Foundation
+import RealmSwift
 
-class Item : Encodable, Decodable{//or Codable = Encodable, Decodable
-    var title : String = ""
-    var done : Bool = false
+class Item: Object {
+    @objc dynamic var title: String = ""
+    @objc dynamic var done: Bool = false
+    var toParent = LinkingObjects(fromType: Category.self, property: "items")
     
 }
